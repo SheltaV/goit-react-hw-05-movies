@@ -2,12 +2,14 @@ import { GlobalStyle } from "./globalStyles/globalStyles";
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { MovieDetails } from "./MovieDetails/MovieDetails";
-import { Cast } from "./Cast";
+import { Cast } from "./Cast/Cast";
 import { Reviews } from "./Reviews";
 import { Layout } from "./Layout/Layout";
+import { NotFound } from "./NotFound";
 
 const Home = lazy(() => import('../Pages/Home'));
 const Movies = lazy(() => import('../Pages/Movies'));
+
 
 export const App = () => {
   return (
@@ -21,6 +23,7 @@ export const App = () => {
             <Route path='reviews' element={<Reviews />} />
           </Route>
         </Route>
+          <Route path='*' element={<NotFound />} />
       </Routes>
       <GlobalStyle />
     </div>);

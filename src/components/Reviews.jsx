@@ -18,7 +18,10 @@ export const Reviews = () => {
         }
         getReviews()
     }, [movieId])
-    
+
+    if (reviews.length === 0) {
+        return <p>There's no information</p>
+    }
     return (
         <ul>
             {reviews.map(review => {

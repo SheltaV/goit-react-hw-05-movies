@@ -26,7 +26,7 @@ export const MovieDetails = () => {
     console.log(movie)
 
     if (movie === null) {
-        return <h1>Oops! Didn't find any page.</h1>
+        return <h1>Page not found!</h1>
     }
     return (
         <Container>
