@@ -1,4 +1,4 @@
-import { Trending } from 'components/Trending/Trending';
+import { SearchedMovies } from 'components/SearchedMovies/SearchedMovies';
 import { useEffect, useState } from 'react';
 import { fetchTrending } from 'services/api';
 
@@ -18,10 +18,11 @@ export default function Home() {
         }
         getTrending()
     }, [])
+    console.log(trending)
 
     return (
         <ul>
-            <Trending values={trending} />
+            <SearchedMovies values={trending} />
         </ul>
     )
 }

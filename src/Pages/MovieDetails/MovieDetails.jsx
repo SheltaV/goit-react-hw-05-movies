@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { Outlet, useParams, useLocation, Link } from "react-router-dom";
+import { Outlet, useParams, useLocation } from "react-router-dom";
 import { fetchDetails } from "services/api";
 import { BsFillBackspaceFill } from 'react-icons/bs';
-import { Container, UpperWrapper, LinkStyle } from "./MovieDetails.styled";
+import { Container, UpperWrapper, LinkStyle, Error, GoBack } from "./MovieDetails.styled";
 
-export const MovieDetails = () => {
+export default function MovieDetails () {
     const {movieId} = useParams();
     const [movie, setMovie] = useState(null);
+    const [error, setError] = useState(false)
     const location = useLocation();
 
     const defaultImg = 'https://via.placeholder.com/250x400/C5C5C5/C5C5C5';
@@ -18,18 +19,19 @@ export const MovieDetails = () => {
                 setMovie(getInfo)
             }
             catch (err) {
-                console.log(err)
+                console.log(err);
+                if (err.code === 'ERR_BAD_REQUEST') {
+                    setError(true);
+                }
             }
         }
         getMovie()
     }, [movieId])
-    console.log(movie)
 
-    if (movie === null) {
-        return <h1>Page not found!</h1>
-    }
     return (
-        <Container>
+    <>
+            {error && <Error>Sorry, there's no information for this movie!</Error>}
+            {movie && <Container>
         <UpperWrapper>
             <img src={
         movie?.poster_path ?
@@ -37,7 +39,7 @@ export const MovieDetails = () => {
                 width={250}
                 alt="poster"
                 />
-            <Link to={location.state?.from ?? '/'}><button><BsFillBackspaceFill size={20} /> Go back</button></Link>
+            <GoBack to={location.state?.from ?? '/'}><BsFillBackspaceFill size={20} /> Go back</GoBack>
             </UpperWrapper>
         <h1>{movie?.title}</h1>
         <p>User score: {movie?.vote_average}</p>
@@ -57,6 +59,7 @@ export const MovieDetails = () => {
                 </li>
             </ul>
             <Outlet/>
+        </Container>}
         
-        </Container>)
+        </>)
 }

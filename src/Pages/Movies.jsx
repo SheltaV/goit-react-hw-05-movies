@@ -1,14 +1,13 @@
 import { Searchbar } from "components/SearchForm/SearchForm";
 import { SearchedMovies } from "components/SearchedMovies/SearchedMovies";
 import { useEffect, useState } from "react";
-import { useLocation, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { fetchSearching } from "services/api";
 // import toast, { Toaster } from 'react-hot-toast';
 
 export default function Movies() {
     const [searchedMovie, setSearchedMovie] = useState([]);
     const [searchParams, setSearchParams] = useSearchParams();
-    const location = useLocation();
 
     const onSubmit = e => {
         const word = e.search.trim()
@@ -35,6 +34,6 @@ export default function Movies() {
     return (
         <div>
             <Searchbar onSubmit={onSubmit} />
-            <SearchedMovies values={searchedMovie} location={location} />
+            <SearchedMovies values={searchedMovie} />
         </div>)
 }

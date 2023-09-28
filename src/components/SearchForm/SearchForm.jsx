@@ -1,18 +1,23 @@
-import { Formik, Field } from 'formik';
-import { SearchForm } from './SearchForm.styled';
+import { Formik } from 'formik';
+import { SearchForm, SearchHeader, SearchFormButton, SearchFormInput } from './SearchForm.styled';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 export const Searchbar = ({onSubmit}) => {
     return (
+        <SearchHeader>
         <Formik
             initialValues={{search: ''}}
         onSubmit={onSubmit}>
         <SearchForm>
-         <Field
+         <SearchFormInput
       name="search"
       type="text"
       placeholder="Search movies"
             />
-        <button type="submit">Search</button>
+            <SearchFormButton type="submit"><AiOutlineSearch size={20} />
+            </SearchFormButton>
         </SearchForm>
-        </Formik>)
+        </Formik>
+        </SearchHeader>
+    )
 }

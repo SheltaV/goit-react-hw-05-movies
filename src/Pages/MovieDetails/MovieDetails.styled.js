@@ -21,3 +21,13 @@ text-decoration: none;
   filter: drop-shadow(3px 5px 5px #000);
   }
 `
+
+export const GoBack = styled(NavLink)`
+text-decoration: none;
+display: flex;
+gap: 4px;
+`
+
+export const Error = styled.h1`
+text-align: center;
+`

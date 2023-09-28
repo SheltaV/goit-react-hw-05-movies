@@ -1,7 +1,6 @@
 import { GlobalStyle } from "./globalStyles/globalStyles";
 import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
-import { MovieDetails } from "./MovieDetails/MovieDetails";
 import { Cast } from "./Cast/Cast";
 import { Reviews } from "./Reviews";
 import { Layout } from "./Layout/Layout";
@@ -9,7 +8,7 @@ import { NotFound } from "./NotFound";
 
 const Home = lazy(() => import('../Pages/Home'));
 const Movies = lazy(() => import('../Pages/Movies'));
-
+const MovieDetails = lazy(() => import("../Pages/MovieDetails/MovieDetails"));
 
 export const App = () => {
   return (
