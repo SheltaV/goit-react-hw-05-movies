@@ -4,7 +4,7 @@ import { Item, List, ListItem } from "./SearchedMovies.styled"
 export const SearchedMovies = ({ values }) => {
     const location = useLocation();
 
-    const defaultImg = 'https://via.placeholder.com/200x110/C5C5C5/C5C5C5';
+    const defaultImg = 'https://img.freepik.com/free-photo/it-s-movie-time-illuminated-lettering_23-2148416787.jpg';
 
     return (
     <section>
